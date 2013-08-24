@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set active_page = 'index' %}
+
+{% block container %}
+      <div class="hero-unit">
+        <h1>Android Application Deobfuscator</h1>
+        <p>
+          Android Application Deobfuscator is a tool for automated deobfuscation of obfuscated android applications.
+          Using our tool the analysis of obfuscated android applications becomes much easier and faster.
+          This website features the public version of our tool.
+        </p>
+        <p><a class="btn btn-primary btn-large" href="#">Try it out now!</a></p>
+      </div>
+
+      <div class="row">
+        {% for title, text in texts: %}
+        <div class="span4">
+          <h2>{{ title }}</h2>
+          <p>{{ text }}</p>
+          <p><a class="btn" href="#">Learn More &raquo;</a></p>
+        </div>
+        {% endfor %}
+      </div>
+{% endblock %}
