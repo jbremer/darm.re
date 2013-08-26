@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set active_page = 'download' %}
+
+{% block container %}
+
+<h2>Downloading</h2>
+<p class="lead">
+  Downloading <em>darm</em> is as simple as cloning the <a href="https://github.com/jbremer/darm">Git repository from Github</a> using the following command:
+</p>
+<pre>git clone git://github.com/jbremer/darm.git</pre> 
+<p class="lead">
+  Of course you can also download the zip file of the <em>master</em> branch, the latest stable release, 
+  <a href="https://github.com/jbremer/darm/archive/master.zip">directly</a>.
+</p>
+
+<h2>Compiling</h2>
+<p class="lead">
+  Compiling <em>darm</em> is as easy as running the <code>make</code> command inside the newly created darm directory. <br />
+  Darm has been tested to compile correctly on Windows, Linux, and Mac OS X. (For windows, please install <a href="http://www.mingw.org/">mingw32</a>.) 
+  If, for some reason, darm does not compile correctly for you, do not hesitate to <a href="contact">contact</a> us in one way or another!
+</p>
+
+{% endblock %}

@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from flask.ext.bootstrap import Bootstrap
 import darm
 import os
 
@@ -7,11 +6,6 @@ STATIC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 TEMPLT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 
 app = Flask('darm', static_folder=STATIC, template_folder=TEMPLT)
-Bootstrap(app)
-
-app.config['BOOTSTRAP_USE_MINIFIED'] = True
-app.config['BOOTSTRAP_USE_CDN'] = True
-app.config['BOOTSTRAP_FONTAWESOME'] = True
 
 
 def disasm(fn, instr):
@@ -39,6 +33,31 @@ def thumb2(instr):
 @app.route('/')
 def root():
     return render_template('index.html')
+
+
+@app.route('/download')
+def download():
+    return render_template('download.html')
+
+
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
+
+
+@app.route('/contributors')
+def contributors():
+    return render_template('contributors.html')
+
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
