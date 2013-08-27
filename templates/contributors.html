@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 {% set active_page = 'contributors' %}
 
+{% set contributors = [
+    ('Jurriaan Bremer', 'skier_t', 'jbremer', 'Main Developer'),
+    ('Valentin Pistol', 'valentinpistol', 'pistol', 'Development, Bug Reports, Ideas'),
+    ('Jonathan Tetteroo', None, 'j-tetteroo', 'Thumb2 Support'),
+    ('Peter Geissler', 'bl4sty', 'blasty', 'All-round cool guy'),
+] -%}
+
 {% block container %}
 
 <p>Following is a list of all the people that are involved in the darm project.</p>
 
 <table class="table">
   <tbody>
-    <tr><th>Jurriaan Bremer</th><th>Main Developer</th></tr>
-    <tr><th>Valentin Pistol</th><th>Development, Bug Reports, Ideas</th></tr>
-    <tr><th>Jonathan Tetteroo</th><th>Thumb2 Support</th></tr>
-    <tr><th>Peter Geissler</th><th>All-round cool guy</th></tr>
+    {% for name, twitter, github, contribs in contributors %}
+    <tr>
+      <th>
+        {% if twitter %}<a href="https://twitter.com/{{ twitter }}">{{ name.split()[0] }}</a>{% else %}{{ name.split()[0] }}{% endif %}
+        {% if github %}<a href="https://github.com/{{ github }}">{{ name.split()[1] }}</a>{% else %}{{ name.split()[1] }}{% endif %}
+      </th>
+      <th>{{ contribs }}</th>
+    </tr>
+    {% endfor %}
   </tbody>
 </table>
 
