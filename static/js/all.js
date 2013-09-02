@@ -44,3 +44,34 @@ prettyPrint:e=e=function(a,d){function e(){for(var b=V.PR_SHOULD_USE_CONTINUATIO
 !0;break}if(!n){d.className+=" prettyprinted";n=m.lang;if(!n){var n=l.match(q),A;if(!n&&(A=x(d))&&u.test(A.tagName))n=A.className.match(q);n&&(n=n[1])}if(y.test(d.tagName))s=1;else var s=d.currentStyle,v=i.defaultView,s=(s=s?s.whiteSpace:v&&v.getComputedStyle?v.getComputedStyle(d,r).getPropertyValue("white-space"):0)&&"pre"===s.substring(0,3);v=m.linenums;if(!(v=v==="true"||+v))v=(v=l.match(/\blinenums\b(?::(\d+))?/))?v[1]&&v[1].length?+v[1]:!0:!1;v&&z(d,v,s);t={h:n,c:d,j:v,i:s};D(t)}}}p<j.length?
 P(e,250):"function"===typeof a&&a()}for(var b=d||document.body,i=b.ownerDocument||document,b=[b.getElementsByTagName("pre"),b.getElementsByTagName("code"),b.getElementsByTagName("xmp")],j=[],m=0;m<b.length;++m)for(var l=0,n=b[m].length;l<n;++l)j.push(b[m][l]);var b=r,c=Date;c.now||(c={now:function(){return+new Date}});var p=0,t,q=/\blang(?:uage)?-([\w.]+)(?!\S)/,f=/\bprettyprint\b/,w=/\bprettyprinted\b/,y=/pre|xmp/i,u=/^code$/i,g=/^(?:pre|code|xmp)$/i,k={};e()}};typeof define==="function"&&define.amd&&
 define("google-code-prettify",[],function(){return X})})();return e}();R||P(Q,0)})();}()
+
+// awesome menu by MoC, thanks!
+// make a select out of a list: responsive sidebar menu
+jQuery(function($) {
+    $('.nav').each(function() {
+        var $select = $('<select class="nav_responsive" />');
+        jQuery(this).find('a').each(function() {
+            var $option = $('<option />');
+            $option.attr('value', $(this).attr('href')).html(
+                '⇒' + $(this).text());
+
+            if ($(this).parent('li').hasClass("active")) {
+                $option.attr('selected', 'selected');
+            }
+            $select.append($option);
+        });
+
+        $select.insertBefore($('.navbar'));
+    });
+});
+
+jQuery(function($){
+    // bind change event to select
+    $('.nav_responsive').bind('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+});
