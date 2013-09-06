@@ -53,11 +53,12 @@ jQuery(function($) {
         jQuery(this).find('a').each(function() {
             var $option = $('<option />');
             $option.attr('value', $(this).attr('href')).html(
-                '⇒' + $(this).text());
+                '&rArr;' + $(this).text());
 
             if ($(this).parent('li').hasClass("active")) {
                 $option.attr('selected', 'selected');
             }
+
             $select.append($option);
         });
 
